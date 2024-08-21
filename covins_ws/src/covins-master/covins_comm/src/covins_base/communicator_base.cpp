@@ -76,7 +76,7 @@ auto CommunicatorBase::ConnectToServer(const char *node, std::string port)->int 
         return 1;
     }
 
-    // loop through all the results and connect to the first we can
+    // loop through all the results and connect to the first we can do
     for (p = servinfo; p != NULL; p = p->ai_next) {
         if ((sockfd = socket(p->ai_family, p->ai_socktype,
                              p->ai_protocol)) == -1) {
