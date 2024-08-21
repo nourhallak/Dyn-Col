@@ -1,0 +1,2 @@
+covins-master/covins_backend:covins-master/covins_comm:covins-master/covins_frontend:covins-master/orb_slam3/Examples/ROS/ORB_SLAM3
+-DCATKIN_DEVEL_PREFIX=/home/it/Desktop/Dyn_Col_test/covins_ws/devel -DCMAKE_INSTALL_PREFIX=/home/it/Desktop/Dyn_Col_test/covins_ws/install -G Unix Makefiles

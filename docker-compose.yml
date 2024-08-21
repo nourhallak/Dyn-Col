@@ -1,0 +1,42 @@
+version: '3'
+services:
+  dynamic_1:
+    build: 
+      context: ./yolo_test
+      dockerfile: Dockerfile.app
+    environment:
+      - ROS_MASTER_URI=http://covins:11311
+      - ROS_HOSTNAME=dynamic
+      - DISPLAY=${DISPLAY}
+    networks:
+      - rosnet
+    command: tail -f /dev/null
+    volumes:
+      - /home/it/Desktop/Dyn_Col_test/yolo_test/dataset/data 1/:/yolo_orbslam3/dataset
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+  dynamic_2:
+    build: 
+      context: ./yolo_test
+      dockerfile: Dockerfile.app
+    environment:
+      - ROS_MASTER_URI=http://covins:11311
+      - ROS_HOSTNAME=dynamic
+      - DISPLAY=${DISPLAY}
+    networks:
+      - rosnet
+    command: tail -f /dev/null
+    volumes:
+      - /home/it/Desktop/Dyn_Col_test/yolo_test/dataset/data 2/:/yolo_orbslam3/dataset
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+  covins:
+    image: covins
+    environment:
+      - ROS_MASTER_URI=http://covins:11311
+      - ROS_HOSTNAME=covins
+    networks:
+      - rosnet
+    command: ["bash", "-c", "source /opt/ros/melodic/setup.bash && roscore"]
+
+networks:
+  rosnet:
+    driver: bridge
